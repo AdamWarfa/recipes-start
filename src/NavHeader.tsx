@@ -18,9 +18,14 @@ export default function NavHeader() {
           <NavLink to="/recipes">Recipes</NavLink>
         </li>
         {auth.isLoggedIn() && (
-          <li>
-            <NavLink to="/add">Add</NavLink>
-          </li>
+          <>
+            <li>
+              <NavLink to="/add">Add</NavLink>
+            </li>
+            <li>
+              <NavLink to="/addCategory">Add Category</NavLink>
+            </li>
+          </>
         )}
 
         <AuthStatus />

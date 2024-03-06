@@ -51,10 +51,24 @@ async function deleteRecipe(id: number): Promise<Recipe> {
   return fetch(`${RECIPE_URL}/${id}`, options).then(handleHttpErrors);
 }
 
+async function addCategory(newCategory: string): Promise<string> {
+  const catObj = { name: newCategory };
+  const options: RequestInit = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Accept: "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(catObj),
+  };
+  return fetch(CATEGORIES_URL, options).then(handleHttpErrors);
+}
+
 async function getInfo(): Promise<Info> {
   return fetch(INFO_URL).then(handleHttpErrors);
 }
 
 export type { Recipe, Info };
 // eslint-disable-next-line react-refresh/only-export-components
-export { getCategories, getRecipes, getRecipe, addRecipe, deleteRecipe, getInfo };
+export { getCategories, getRecipes, getRecipe, addRecipe, deleteRecipe, addCategory, getInfo };

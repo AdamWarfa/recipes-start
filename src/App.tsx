@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Categories } from "./recipes/Categories";
 import Recipe from "./recipes/Recipe";
 import RecipeForm from "./recipes/RecipeForm";
+import CategoryForm from "./recipes/CategoryForm";
 import Login from "./security/Login";
 import Logout from "./security/Logout";
 import Layout from "./Layout";
@@ -16,6 +17,7 @@ export default function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/info" element={<Home />} />
         <Route path="/categories/" element={<Categories />} />
         <Route path="/recipes" element={<RecipesLayout />}>
           <Route path=":id" element={<Recipe />} />
@@ -24,8 +26,17 @@ export default function App() {
         <Route
           path="/add"
           element={
-            <RequireAuth roles={["ADMIN"]}>
+            <RequireAuth roles={["USER"]}>
               <RecipeForm />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="/addCategory"
+          element={
+            <RequireAuth roles={["ADMIN"]}>
+              <CategoryForm />
             </RequireAuth>
           }
         />
