@@ -22,7 +22,6 @@ export default function App() {
         <Route path="/recipes" element={<RecipesLayout />}>
           <Route path=":id" element={<Recipe />} />
         </Route>
-
         <Route
           path="/add"
           element={
@@ -31,7 +30,6 @@ export default function App() {
             </RequireAuth>
           }
         />
-
         <Route
           path="/addCategory"
           element={
@@ -40,10 +38,9 @@ export default function App() {
             </RequireAuth>
           }
         />
-
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<h2>Not Found</h2>} />
-        <Route path="/logout" element={<Logout />} />
+        <Route path="/logout" element={<Logout />} />+
       </Routes>
     </Layout>
   );
